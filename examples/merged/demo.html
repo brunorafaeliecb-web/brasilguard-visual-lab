@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>BGD Visual — Demo mesclada</title>
+<style>
+body{margin:0;font-family:system-ui;background:#eef2f7;color:#243345}
+header{background:#32455c;color:#fff;padding:20px;text-align:center}
+#cube{width:100%;height:240px;background:#0a0a0a;margin:20px 0}
+.container{max-width:800px;margin:auto;padding:20px}
+.bgd-card{background:white;border-radius:16px;padding:20px;margin:12px 0;box-shadow:0 4px 16px #213c5818;cursor:pointer}
+#typed{font-size:28px;font-weight:700;min-height:40px}
+button{padding:12px 20px;background:#32455c;color:white;border:none;border-radius:8px;cursor:pointer;margin:6px}
+</style>
+</head>
+<body>
+<header><strong>BGD Visual Lab</strong> — padrões mesclados</header>
+<div class="container">
+  <div id="cube"></div>
+  <div id="typed"></div>
+  <button onclick="BGDVisual.typewriter('#typed', 'BrasilGuard Academy • DIPI N1')">Animar texto (GSAP)</button>
+  <button onclick="BGDVisual.animate('.bgd-card', {x:20, opacity:0.7}, 0.4)">Animar cards (motion-style)</button>
+  <div class="bgd-card"><h3>Módulo 1</h3><p>Fundamentos</p></div>
+  <div class="bgd-card"><h3>Módulo 2</h3><p>Hardware</p></div>
+  <div class="bgd-card"><h3>Kids</h3><p>Pré-básico lúdico</p></div>
+</div>
+<script src="../../src/bgd-visual.js"></script>
+<script>
+BGDVisual.initCube('#cube');
+BGDVisual.enableCards();
+</script>
+</body>
+</html>

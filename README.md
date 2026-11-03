@@ -1,22 +1,21 @@
 # BrasilGuard Visual Lab
 
-Laboratório de componentes visuais e animações para a BrasilGuard Academy.
+Repositório próprio de engenharia reversa mesclando os padrões dos 10 repositórios auditados.
 
-Padrões extraídos (engenharia reversa) de:
-- three.js (3D WebGL)
-- GSAP (animações de alta performance)
-- react-bits / magicui (componentes animados)
+## O que é nosso
 
-**Padrão BGD:** auditoria e análise. Nada foi implementado diretamente no N1 ainda.
+- `src/bgd-visual.js` — API unificada que mistura:
+  - three.js (cubo 3D)
+  - GSAP (typewriter)
+  - motion-style (tween vanilla)
+  - micro-interações de cards (estilo react-bits/magicui)
+- `examples/merged/demo.html` — demo que usa a API mesclada
+- `ANALYSIS.md` — auditoria completa dos 10
 
-## Exemplos incluídos
+## Como testar
 
-- `examples/three-cube.html` — cubo 3D rotativo (three.js via CDN)
-- `examples/gsap-typing.html` — animação de digitação com GSAP
-- `examples/interactive-cards.html` — cards com hover e micro-interações
+Abra `examples/merged/demo.html` no navegador.
 
-## Próximos passos
+## Padrão BGD
 
-1. Auditar os exemplos no navegador.
-2. Escolher o que entra no N1 ou no Kids.
-3. Adaptar ao visual da marca (BRafaelS / DIPI).
+Auditoria feita. Código é nosso (padrões extraídos, não cópia direta). Nada aplicado no site de produção ainda.
