@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>GSAP Typing - BrasilGuard Visual Lab</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<style>
+body{margin:0;display:flex;align-items:center;justify-content:center;height:100vh;background:#eef2f7;font-family:system-ui}
+#text{font-size:32px;font-weight:700;color:#32455c}
+</style>
+</head>
+<body>
+<div id="text"></div>
+<script>
+const text = "Bem-vindo à BrasilGuard Academy";
+const el = document.getElementById("text");
+let i = 0;
+gsap.to({}, {
+  duration: text.length * 0.05,
+  onUpdate: function() {
+    const progress = this.progress();
+    el.textContent = text.slice(0, Math.floor(progress * text.length));
+  }
+});
+</script>
+</body>
+</html>
