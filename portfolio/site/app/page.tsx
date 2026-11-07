@@ -10,7 +10,7 @@ const projects=[["FR0 Architecture","Python · JSON Schema · SHA-256","https://
 export default function Home(){
   const [lang,setLang]=useState<Lang>("en");
   const [theme,setTheme]=useState<"dark"|"light">("dark");
-  const [lamp,setLamp]=useState(true);
+  const [lampMode,setLampMode]=useState<"normal"|"inverse"|"off">("normal");
   const [pointer,setPointer]=useState(false);
   const [position,setPosition]=useState({x:50,y:50});
   useEffect(()=>{
@@ -20,7 +20,8 @@ export default function Home(){
       else if(navigator.language.toLowerCase().startsWith("pt"))setLang("pt");
       const t=localStorage.getItem("bgd-theme");
       if(t==="dark"||t==="light")setTheme(t);
-      setLamp(localStorage.getItem("bgd-flash")!=="off");
+      const savedLamp=localStorage.getItem("bgd-flash");
+      setLampMode(savedLamp==="off"?"off":savedLamp==="inverse"?"inverse":"normal");
     }catch{}
   },[]);
   useEffect(()=>{
@@ -65,7 +66,7 @@ export default function Home(){
     descriptions:{api:w[27],llm:w[28],data:w[29],mcp:w[30]}
   };
   return <>
-    <div aria-hidden="true" className={"flashlight"+(lamp&&pointer?" on":"")} style={{["--fx" as string]:position.x+"px",["--fy" as string]:position.y+"px"}}/>
+    <div aria-hidden="true" className={"flashlight"+(lampMode!=="off"&&pointer?" on":"")+(lampMode==="inverse"?" inverse":"")} style={{["--fx" as string]:position.x+"px",["--fy" as string]:position.y+"px"}}/>
     <header>
       <div className="container header-row">
         <a href="https://wa.me/5521990888213?text=estava%20analisando%20seu%20site%2C%20quero%20maiores%20informa%C3%A7%C3%B5es%20sobre" className="brand" target="_blank" rel="noopener noreferrer" aria-label="BRafaelS — falar pelo WhatsApp"><span className="brand-accent">B</span><span className="brand-accent">R</span>afael<span className="brand-accent">S</span>.</a>
@@ -74,9 +75,10 @@ export default function Home(){
           <a href="#about">{w[2]}</a><a href="#contact">{w[3]}</a>
         </nav>
         <div className="controls">
-          <button aria-label={w[20]} title={w[20]} aria-pressed={lamp} onClick={()=>{
-            setLamp(!lamp);
-            try{localStorage.setItem("bgd-flash",lamp?"off":"on")}catch{}
+          <button aria-label={`${w[20]}: ${lampMode==="normal"?"normal":lampMode==="inverse"?"invertida":"desligada"}`} title={`${w[20]}: ${lampMode==="normal"?"normal":lampMode==="inverse"?"invertida":"desligada"} · toque para alternar`} aria-pressed={lampMode!=="off"} onClick={()=>{
+            const next=lampMode==="normal"?"inverse":lampMode==="inverse"?"off":"normal";
+            setLampMode(next);
+            try{localStorage.setItem("bgd-flash",next)}catch{}
           }}>🔦</button>
           <button aria-label="Theme" onClick={()=>{
             const next=theme==="dark"?"light":"dark";
