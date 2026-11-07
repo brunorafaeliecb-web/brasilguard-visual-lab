@@ -68,7 +68,7 @@ export default function Home(){
     <div aria-hidden="true" className={"flashlight"+(lamp&&pointer?" on":"")} style={{["--fx" as string]:position.x+"px",["--fy" as string]:position.y+"px"}}/>
     <header>
       <div className="container header-row">
-        <a href="#top" className="brand">BRafael<span>S.</span></a>
+        <a href="https://wa.me/5521990888213?text=estava%20analisando%20seu%20site%2C%20quero%20maiores%20informa%C3%A7%C3%B5es%20sobre" className="brand" target="_blank" rel="noopener noreferrer" aria-label="BRafaelS — falar pelo WhatsApp">BRafael<span>S.</span></a>
         <nav aria-label="Main navigation">
           <a href="#work">{w[0]}</a><a href="#approach">{w[1]}</a>
           <a href="#about">{w[2]}</a><a href="#contact">{w[3]}</a>
@@ -133,6 +133,6 @@ export default function Home(){
         <a className="btn" href="https://github.com/brunorafaeliecb-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div></section>
     </main>
-    <footer><div className="container footer-content"><span>© 2026 Bruno Rafael · BrasilGuard Sistemas · AI Engineering Portfolio</span><span className="footer-credit">CRIADO POR <strong>BRAFAELS</strong></span></div></footer>
+    <footer><div className="container footer-content"><span>© 2026 Bruno Rafael · BrasilGuard Sistemas · AI Engineering Portfolio</span><a href="https://wa.me/5521990888213?text=estava%20analisando%20seu%20site%2C%20quero%20maiores%20informa%C3%A7%C3%B5es%20sobre" className="footer-credit" target="_blank" rel="noopener noreferrer" aria-label="Criado por BRafaelS — contato pelo WhatsApp">CRIADO POR <strong>BRAFAELS</strong></a></div></footer>
   </>;
 }
