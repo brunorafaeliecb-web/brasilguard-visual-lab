@@ -133,6 +133,6 @@ export default function Home(){
         <a className="btn" href="https://github.com/brunorafaeliecb-web" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
       </div></section>
     </main>
-    <footer><div className="container">© 2026 Bruno Rafael · BrasilGuard Sistemas · AI Engineering Portfolio</div></footer>
+    <footer><div className="container footer-content"><span>© 2026 Bruno Rafael · BrasilGuard Sistemas · AI Engineering Portfolio</span><span className="footer-credit">CRIADO POR <strong>BRAFAELS</strong></span></div></footer>
   </>;
 }
