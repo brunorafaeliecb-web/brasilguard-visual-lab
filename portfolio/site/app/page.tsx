@@ -28,17 +28,33 @@ export default function Home(){
     document.documentElement.dataset.theme=theme;
   },[lang,theme]);
   useEffect(()=>{
+    const coarse=window.matchMedia("(pointer: coarse)");
+    const syncPointer=()=>{
+      // Touchscreens have no hover: show the beam at viewport center until touched.
+      if(coarse.matches){
+        setPointer(true);
+        setPosition({x:window.innerWidth/2,y:window.innerHeight/2});
+      }else{
+        setPointer(false);
+      }
+    };
     const track=(e:PointerEvent)=>{
-      if(e.pointerType!=="mouse"&&e.pointerType!=="pen")return;
+      // Follow mouse, pen and touch without preventing native scrolling.
+      if(e.pointerType!=="mouse"&&e.pointerType!=="pen"&&e.pointerType!=="touch")return;
       setPointer(true);
       setPosition({x:e.clientX,y:e.clientY});
     };
-    const leave=()=>setPointer(false);
+    const leave=()=>{if(!coarse.matches)setPointer(false)};
+    syncPointer();
+    window.addEventListener("pointerdown",track,{passive:true});
     window.addEventListener("pointermove",track,{passive:true});
+    window.addEventListener("resize",syncPointer,{passive:true});
     document.addEventListener("mouseleave",leave);
     window.addEventListener("blur",leave);
     return()=>{
+      window.removeEventListener("pointerdown",track);
       window.removeEventListener("pointermove",track);
+      window.removeEventListener("resize",syncPointer);
       document.removeEventListener("mouseleave",leave);
       window.removeEventListener("blur",leave);
     };
