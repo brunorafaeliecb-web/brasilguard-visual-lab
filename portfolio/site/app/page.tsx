@@ -158,17 +158,9 @@ export default function Home(){
               ]}
             />
           </div>
-          <div className="skill-globe-wrap">
-            <h3>Certificações</h3>
-            <SkillsGlobe
-              title="Certs"
-              color="#9ed3ae"
-              items={["HCSA-VMS","HCSA-Access","HCSA-Alarm","HCSA-CCTV","HCSA-SaaS","Intelbras Solar"]}
-            />
-          </div>
         </div>
         <div className="certs">
-          <h3>Certificados</h3>
+          <h3>Certificações</h3>
           <div className="certs-grid">
             <img src="/certs/HCSA-VMS.png" alt="HCSA-VMS" />
             <img src="/certs/HCSA-Access-Control.png" alt="HCSA-Access Control" />
