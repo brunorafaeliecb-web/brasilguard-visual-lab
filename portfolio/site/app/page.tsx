@@ -3,6 +3,7 @@ import {useEffect,useState} from "react";
 import dynamic from "next/dynamic";
 import type {SceneLabels} from "../components/Scene3D";
 const Scene=dynamic(()=>import("../components/Scene3D"),{ssr:false,loading:()=> <div className="scene-loading">◈</div>});
+const SkillsGlobe=dynamic(()=>import("../components/SkillsGlobe"),{ssr:false,loading:()=> <div className="scene-loading">◈</div>});
 const copy={"en":["Projects","Approach","About","Contact","AI ENGINEERING · AGENTIC SYSTEMS","INTELLIGENCE.","ENGINEERED WITH CONTROL.","I'm Bruno Rafael. I design modular AI architectures connecting agents, APIs, knowledge systems and human decisions.","Explore projects","SELECTED WORK","Engineering without the hype.","Projects and architectural work from BrasilGuard, identified by their technical maturity.","Powerful AI needs boundaries.","Governed capabilities, human authorization and evidence-based execution.","Software engineering student and independent developer at BrasilGuard Sistemas.","Open to international remote roles and projects.","View repository","Discuss architecture","Light","Dark","Flashlight","AI CORE","API GATEWAY","LLM AGENTS","DATA LAYER","MCP TOOLS","DRAG TO ROTATE · SCROLL TO ZOOM · SELECT A NODE","API integrations with controlled capabilities.","Agent workflows and model orchestration.","Knowledge indexing and retrieval.","Secure MCP tool invocation.","Public repository","Private project · technical overview","Skills"],"pt":["Projetos","Abordagem","Sobre","Contato","ENGENHARIA DE IA · SISTEMAS AGÊNTICOS","INTELIGÊNCIA.","PROJETADA COM CONTROLE.","Sou Bruno Rafael. Projeto arquiteturas modulares de IA que conectam agentes, APIs, conhecimento e decisões humanas.","Explorar projetos","PROJETOS SELECIONADOS","Engenharia sem exageros.","Projetos e arquiteturas da BrasilGuard, identificados conforme sua maturidade técnica.","IA poderosa precisa de limites.","Capacidades governadas, autorização humana e execução baseada em evidências.","Estudante de engenharia de software e desenvolvedor independente na BrasilGuard Sistemas.","Disponível para vagas internacionais remotas e projetos.","Ver repositório","Conversar sobre arquitetura","Claro","Escuro","Lanterna","NÚCLEO IA","GATEWAY API","AGENTES LLM","CAMADA DE DADOS","FERRAMENTAS MCP","ARRASTE PARA GIRAR · SCROLL PARA ZOOM · SELECIONE UM NÓ","Integração de APIs com capacidades controladas.","Fluxos de agentes e orquestração de modelos.","Indexação e recuperação de conhecimento.","Invocação segura de ferramentas MCP.","Repositório público","Projeto privado · visão técnica","Skills"],"es":["Proyectos","Enfoque","Acerca de","Contacto","INGENIERÍA IA · SISTEMAS AGÉNTICOS","INTELIGENCIA.","DISEÑADA CON CONTROL.","Soy Bruno Rafael. Diseño sistemas de IA modulares con agentes, APIs, conocimiento y decisiones humanas.","Explorar proyectos","PROYECTOS DESTACADOS","Ingeniería sin exageraciones.","Proyectos y arquitecturas de BrasilGuard según su madurez técnica.","La IA necesita límites.","Capacidades controladas, autorización humana y ejecución verificable.","Estudiante de ingeniería de software y desarrollador independiente en BrasilGuard Sistemas.","Disponible para puestos remotos internacionales.","Ver repositorio","Hablar de arquitectura","Claro","Oscuro","Linterna","NÚCLEO IA","PUERTA API","AGENTES LLM","CAPA DE DATOS","HERRAMIENTAS MCP","ARRASTRA PARA GIRAR · SCROLL PARA ZOOM · SELECCIONA UN NODO","Integraciones API controladas.","Orquestación de agentes.","Indexación y búsqueda de conocimientos.","Herramientas MCP seguras.","Repositorio público","Proyecto privado · arquitectura","Skills"],"fr":["Projets","Approche","À propos","Contact","INGÉNIERIE IA · SYSTÈMES AGENTIQUES","INTELLIGENCE.","CONÇUE AVEC MAÎTRISE.","Je suis Bruno Rafael. Je conçois des architectures IA modulaires reliant agents, API, connaissances et décisions humaines.","Voir les projets","PROJETS SÉLECTIONNÉS","Ingénierie sans exagération.","Projets et architectures de BrasilGuard selon leur maturité.","Une IA puissante exige des limites.","Contrôle humain et exécution vérifiable.","Étudiant en génie logiciel et développeur indépendant chez BrasilGuard Sistemas.","Ouvert aux postes internationaux à distance.","Voir le dépôt","Discuter de l'architecture","Clair","Sombre","Lampe","CŒUR IA","PASSERELLE API","AGENTS LLM","COUCHE DONNÉES","OUTILS MCP","GLISSEZ POUR TOURNER · MOLETTE POUR ZOOMER · CHOISISSEZ UN NŒUD","Intégrations API contrôlées.","Orchestration des agents.","Indexation et recherche.","Appels MCP sécurisés.","Dépôt public","Projet privé · architecture","Skills"],"it":["Progetti","Approccio","Chi sono","Contatti","INGEGNERIA IA · SISTEMI AGENTICI","INTELLIGENZA.","PROGETTATA CON CONTROLLO.","Sono Bruno Rafael. Progetto architetture IA modulari con agenti, API, conoscenza e decisioni umane.","Esplora i progetti","PROGETTI SELEZIONATI","Ingegneria senza esagerazioni.","Progetti e architetture di BrasilGuard secondo la loro maturità.","L'IA potente richiede limiti.","Controllo umano ed esecuzione verificabile.","Studente di ingegneria del software e sviluppatore indipendente presso BrasilGuard Sistemas.","Disponibile per ruoli internazionali da remoto.","Apri repository","Parliamo dell'architettura","Chiaro","Scuro","Torcia","NUCLEO IA","GATEWAY API","AGENTI LLM","LIVELLO DATI","STRUMENTI MCP","TRASCINA PER RUOTARE · SCORRI PER ZOOM · SELEZIONA UN NODO","Integrazioni API controllate.","Orchestrazione degli agenti.","Indicizzazione e ricerca.","Strumenti MCP sicuri.","Repository pubblico","Progetto privato · architettura","Skills"],"de":["Projekte","Ansatz","Über mich","Kontakt","KI-ENGINEERING · AGENTENSYSTEME","INTELLIGENZ.","MIT KONTROLLE ENTWICKELT.","Ich bin Bruno Rafael. Ich entwickle modulare KI-Architekturen mit Agenten, APIs, Wissen und menschlichen Entscheidungen.","Projekte ansehen","AUSGEWÄHLTE PROJEKTE","Engineering ohne Übertreibung.","Projekte und Architekturen von BrasilGuard nach technischem Reifegrad.","Leistungsfähige KI braucht Grenzen.","Menschliche Freigaben und nachvollziehbare Ausführung.","Software-Engineering-Student und unabhängiger Entwickler bei BrasilGuard Sistemas.","Offen für internationale Remote-Rollen.","Repository ansehen","Architektur besprechen","Hell","Dunkel","Taschenlampe","KI-KERN","API-GATEWAY","LLM-AGENTEN","DATENSCHICHT","MCP-WERKZEUGE","ZIEHEN ZUM DREHEN · SCROLLEN ZUM ZOOMEN · KNOTEN AUSWÄHLEN","Kontrollierte API-Integration.","Orchestrierung von Agenten.","Wissensindexierung und Suche.","Sichere MCP-Werkzeuge.","Öffentliches Repository","Privates Projekt · Architektur","Skills"]};
 type Lang=keyof typeof copy;
 const languageOptions:Lang[]=["pt","en","es","fr","it","de"];
@@ -133,25 +134,41 @@ export default function Home(){
             <section id="skills" className="section"><div className="container">
         <div className="eyebrow">{w[33]}</div>
         <h2>SKILLS</h2>
-        <div className="skills-grid">
-          <div className="skill-group">
+        <div className="skills-globes">
+          <div className="skill-globe-wrap">
             <h3>Hard Skills</h3>
-            <div className="skill-tags">
-              <span>HCSA-VMS</span><span>HCSA-Access Control</span><span>HCSA-Alarm</span>
-              <span>HCSA-CCTV</span><span>HCSA-SaaS</span><span>Energia Solar</span>
-              <span>Python</span><span>TypeScript</span><span>FastAPI</span><span>Next.js</span>
-            </div>
+            <SkillsGlobe
+              title="Hard"
+              color="#d2b75c"
+              items={["Python","CSS","JavaScript","Flutter","Go","Ruby","MySQL","Supabase"]}
+            />
           </div>
-          <div className="skill-group">
+          <div className="skill-globe-wrap">
             <h3>Soft Skills</h3>
-            <div className="skill-tags">
-              <span>Comunicação</span><span>Resolução de Problemas</span>
-              <span>Aprendizado Contínuo</span><span>Trabalho em Equipe</span>
-            </div>
+            <SkillsGlobe
+              title="Soft"
+              color="#81cce1"
+              items={[
+                "Automação Industrial","Automação Comercial","Automação Residencial",
+                "Automatização de Portões","Instalação de Sistemas",
+                "CFTV Analógico","CFTV Digital","PABX Analógico","PABX Digital",
+                "Concertina","Cerca Elétrica",
+                "Controle de Acesso Veicular","Controle de Acesso Pedestre",
+                "Portaria Remota","Alarme Monitorado","Alarme Não Monitorado","Intertravamento"
+              ]}
+            />
+          </div>
+          <div className="skill-globe-wrap">
+            <h3>Certificações</h3>
+            <SkillsGlobe
+              title="Certs"
+              color="#9ed3ae"
+              items={["HCSA-VMS","HCSA-Access","HCSA-Alarm","HCSA-CCTV","HCSA-SaaS","Intelbras Solar"]}
+            />
           </div>
         </div>
         <div className="certs">
-          <h3>Certificações</h3>
+          <h3>Certificados</h3>
           <div className="certs-grid">
             <img src="/certs/HCSA-VMS.png" alt="HCSA-VMS" />
             <img src="/certs/HCSA-Access-Control.png" alt="HCSA-Access Control" />
